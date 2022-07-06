@@ -90,7 +90,7 @@ const thoughtController = {
 
     // Add a new Reaction
     addReaction({params, body}, res) {
-        Thought.findOneAndUpdate({_id: params.thoughtId}, {$push: {reactions: body}}, {new: true, runValidators: true})
+        Thought.findOneAndUpdate({_id: params.thoughtId}, {$push: {reactions: body}}, {new: true})
             .populate({
                 path: 'reactions',
                 select: '-__v'

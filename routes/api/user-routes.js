@@ -2,28 +2,28 @@
 const router = require('express').Router();
 
 // Set requirements (from users-controller)
-import { 
+const { 
     getAllUsers, 
-    getUsersById, 
-    createUsers, 
-    updateUsers, 
-    deleteUsers, 
+    getUserById, 
+    createUser, 
+    updateUser, 
+    deleteUser, 
     addFriend, 
     deleteFriend 
-} from '../controllers/userController';
+} = require('../../controllers/userController');
 
 // -- Directs to: /api/users <GET, POST>
 router
     .route('/')
     .get(getAllUsers)
-    .post(createUsers);
+    .post(createUser);
 
 // -- Directs to: /api/users/:id <GET, PUT, DELETE>
 router
     .route('/:id')
-    .get(getUsersById)
-    .put(updateUsers)
-    .delete(deleteUsers);
+    .get(getUserById)
+    .put(updateUser)
+    .delete(deleteUser);
 
 // -- Directs to: /api/users/:userId/friends/:friendId <POST, DELETE>
 router
@@ -32,4 +32,4 @@ router
     .delete(deleteFriend);
 
 // Module export router
-export default router;
+module.exports = router;
